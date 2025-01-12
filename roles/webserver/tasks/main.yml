@@ -1,0 +1,23 @@
+---
+# tasks file for webserver
+#install Apache Web Server
+
+- name: Install Apache Web Server
+  apt:
+    name: apache2
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Start Apache Web Server
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Deploy HTML Page
+  copy:
+    dest: "/var/www/html/index.html"
+    content: "<html><body><h1>Welcome to The WebServer</h1></body></html>"
+  become: yes

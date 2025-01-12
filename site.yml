@@ -1,0 +1,23 @@
+---
+- name: configure web server
+  hosts: web
+  become: true
+  become_user: root
+  roles:
+    - webserver
+
+- name: configure application server
+  hosts: app
+  become: true
+  become_user: root
+  roles:
+    - appserver
+
+- name: configure database server
+  hosts: data
+  become: true
+  become_user: root
+  roles:
+    - dbserver
+
+

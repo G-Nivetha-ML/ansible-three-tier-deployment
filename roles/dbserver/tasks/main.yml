@@ -1,0 +1,25 @@
+---
+# tasks file for dbserver
+# Install MySQL Server and Start
+
+- name: Install MySQL server
+  apt:
+    name: mysql-server
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Install pymysql python module
+  apt:
+    name: python3-pymysql
+    state: present
+  become: yes
+
+- name: Start MySQL server
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+  become: yes
+
+
